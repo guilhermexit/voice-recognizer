@@ -5,9 +5,10 @@ from time import sleep
 
 robo = pyttsx3.init()
 recon = sr.Recognizer()
-resposta = ""
 
 
+
+#Introdução ao aplicativo
 def bem_vindo():
     
     with sr.Microphone() as source:
@@ -16,7 +17,8 @@ def bem_vindo():
         robo.setProperty('rate', 140)
         robo.setProperty('volume', 0.7)
         robo.runAndWait()
-        
+
+ #Função que apenas interpreta a voz do usuário para preencher o nome              
 def cadastro_nome():
     
     with sr.Microphone() as source:
@@ -27,10 +29,13 @@ def cadastro_nome():
         robo.setProperty('volume', 0.7)
         robo.runAndWait()  
         audio = recon.listen(source)
+        print("==================================")
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))  
-    
+        print("==================================")
+
+#Função que apenas interpreta a voz do usuário para preencher o e-mail        
 def cadastro_email():
     with sr.Microphone() as source:
       
@@ -43,8 +48,10 @@ def cadastro_email():
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))  
-        
-        
+        print("==================================")
+      
+
+#Função que apenas interpreta a voz do usuário para preencher a senha       
 def cadastro_senha():
     with sr.Microphone() as source:
       
@@ -54,12 +61,14 @@ def cadastro_senha():
         robo.setProperty('volume', 0.7)
         robo.runAndWait()    
         audio = recon.listen(source)
+        print("==================================")
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))     
-        
-        
-def login():
+        print("==================================")
+       
+#Função que apenas interpreta a voz do usuário para preencher o login        
+def entrar():
     
     with sr.Microphone() as source:
       
@@ -81,8 +90,10 @@ def login():
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))   
+        print("==================================")
         
-        
+
+#Tamanho da área que o usuário tem disponível para plantio        
 def area_plantio():
     
     with sr.Microphone() as source:
@@ -93,10 +104,13 @@ def area_plantio():
         robo.setProperty('volume', 0.7)
         robo.runAndWait()
         audio = recon.listen(source)
+        print("==================================")
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))
+        print("==================================")
         
+#Região onde o usuário reside     
 def regiao():
     
     with sr.Microphone() as source:
@@ -107,10 +121,15 @@ def regiao():
         robo.setProperty('volume', 0.7)
         robo.runAndWait()
         audio = recon.listen(source)
+        print("==================================")
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))
-        
+        print("==================================")
+
+
+
+#Dinheiro disponível para comprar o necessário do plantio      
 def investir():
     
     with sr.Microphone() as source:
@@ -121,10 +140,14 @@ def investir():
         robo.setProperty('volume', 0.7)
         robo.runAndWait()
         audio = recon.listen(source)
+        print("==================================")
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))
+        print("==================================")
 
+
+#Referente ao tempo que o usuário teria disponível para esperar os frutos
 def tempo():
     
     with sr.Microphone() as source:
@@ -135,22 +158,45 @@ def tempo():
         robo.setProperty('volume', 0.7)
         robo.runAndWait()
         audio = recon.listen(source)
+        print("==================================")
         print("Ouvindo...")
         sleep(1)
         print(recon.recognize_google(audio, language='pt'))
-        
+        print("==================================")
+        robo.say("Ok. Aguarde ")
+        robo.setProperty('voice', b'brasil')
+        robo.setProperty('rate', 140)
+        robo.setProperty('volume', 0.7)
+        robo.runAndWait() 
 
-        
-def main():
-    bem_vindo()
-    cadastro_nome()
-    cadastro_email()
-    cadastro_senha()    
-    login()
+#Aqui seria a resposta da API do GPT.       
+#def resposta():
+   #robo.say("")
+   #robo.setProperty('voice', b'brasil')
+   #robo.setProperty('rate', 140)
+   #robo.setProperty('volume', 0.7)
+   #robo.runAndWait()
+    
+
+
+def formulario():
     area_plantio()
     regiao()
     investir()
     tempo()
+
+def login():
+    cadastro_nome()
+    cadastro_email()
+    cadastro_senha()    
+    entrar()
+    
+    
+def main():
+    bem_vindo()
+    login()
+    formulario()
+    
     
     
 main()
