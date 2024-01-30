@@ -6,8 +6,6 @@ from time import sleep
 robo = pyttsx3.init()
 recon = sr.Recognizer()
 
-
-
 #Introdução ao aplicativo
 def bem_vindo():
     
